@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 body{
-    background: #808080;
+    background: white;
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
+}
+section + section {
+    margin-top: 5%;
 }
 .container{
     padding: 20px,20px,20px,20px;
@@ -10,24 +16,114 @@ body{
     display: flex;
     text-align: center;
     justify-content: center;
-    height: 25px;
+}
+.header.container{
+    height: 101px;
+}
+.logo{
+    margin: 0;
+    position: relative;
+    font-family: 'Indie Flower', cursive;
+    font-size: 101px;
+}
+
+.input-panel.container{
+    max-width: 300px;
+}
+
+.input{
+    max-width: 300px;
+    height: 75px;
+}
+input[type="text"] {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px; 
+    -khtml-border-radius: 3px; 
+    background: #ffffff !important; 
+    outline: none; 
+    height: 25px; 
+    width: 250px; 
+    color: black; 
+    font-size: 24px; 
+    font-family: 'Indie Flower', cursive; 
+ }
+
+.control-panel.container{
+    max-width: 300px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+}
+.control-btn{
+    margin-top: 20px;
+    justify-content: center;
+    background-color: whitesmoke; 
+    color: black;
+    width: 40px;
+    height: 40px;
+    padding: 15px 32px;
+    text-align: center;
+    display: flex;
+    font-size: 16px;
+    border-radius: 0.15cm;
+}
+
+.control-btn + .control-btn{
+    margin-left: 15px;
+}
+.control-btn:hover {
+    background-color: #F5F5F5; 
+    color: #080808;
+}
+.name-sort{
+    padding: 15px;
+}
+.updown{
+    position: relative;
+    flex-direction: column;
+}
+.updown-btn{
+    margin-top: 15px;
+    justify-content: center;
+    background-color: whitesmoke; 
+    color: black;
+    text-align: center;
+    display: flex;
+    font-size: 16px;
+    border-radius: 0.15cm;
+    width: 30px;
+    height: 30px;
+}
+.updown-btn + .updown-btn{
+    margin-top: 10px;
+    margin-left: 0px;
+}
+.first-page{
+    background: url(/images/arowLeft.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    max-width: 30px;
+    height: 30px;
+    background-size: 100%;
+    color: inherit;
+
+}
+.last-page{
+    background: url(/images/arrowRight.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    max-width: 30px;
+    height: 30px;
+    background-size: 100%;
+    color: inherit;
+
 }
 .task-border{
     display: flex;
     text-align: center;
     justify-content: center;
 }
-.logo{
-    margin: 0;
-    position: relative;
-}
-.footer.container{
-    max-width: 1280px;
-    height: 25px;
-}
-.author{
-    margin-left: auto;
-}
-section + section {
-    margin-top: 5%;
-}
+
