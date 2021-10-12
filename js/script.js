@@ -1,201 +1,70 @@
-function powerNum(number) {
-    return Math.pow(number, 2);
+/*
+Дан массив из чисел
+    - Сделайте из него массив, состоящий из квадратов этих чисел.
+    - Верните массив, состоящий только из уникальных значений(убрать все дубликаты, число в новом массиве не должно повторяться)
+    - Проверьте то, что все элементы в массиве больше нуля (результат - true/false).
+    - Оставьте в нем только отрицательные числа.
+    - Найдите сумму этих чисел.
+  Дан массив, в нем могут быть обычные элементы и подмассивы(например [1, 2, [3, 4], 5, {a: 7}]). Оставьте в нем только подмассивы.
+Работа со строками
+    - Верните количество слов в строке, длина которых больше 4 символов.
+    - Если в строке имеется шестизначное число(ни больше, ни меньше) - верните его, как результат функции. Число может быть не отделено от других символов пробелами.
+*/
+//- Возвращает массив, состоящий из квадратов чисел.
+function powerNum(array) {
+    return array.map(el => el*el);//Math.pow(number, 2);
 }
+const array = [-2,-1,0,1,2];
+const testFun1 = powerNum(array);
+console.log("Массив из квадратов чисел: ",testFun1);
 
-function createOriginalArr(array) {
-    outArr = [];
-    //console.log(Array.isArray(array));
-    //if array is object Array
-    if (Array.isArray(array)) {
-        // doing algorytm
-        for(let i = 0; i < array.length; i++){
-            //console.log(outArr.indexOf(array[i]));
-            if(outArr.indexOf(array[i]) != -1){
-                continue;
-            }
-            else{
-                outArr.push(array[i]);
-            }
-        }
-        //console.log();
-    }
-    else {
-        //console.log(array);
-        outArr.push(array);
-    }
-    return outArr;
-}
+//Функция возвращает массив, состоящий только из уникальных значений(убрать все дубликаты, число в новом массиве не должно повторяться)
 
-function isPositiveArr(array){
-    //console.log(Array.isArray(array));
-    if(Array.isArray(array)){
-        for(let i=0; i<array.length; i++){
-            // console.log(`cycle ${i}:`, typeof(array[i]) === Number && array[i] > 0);
-            // console.log(typeof(array[i]),Number.isNaN(array[i]));
-            if(array[i] > 0){
-                continue;
-            }
-            else{
-                return false;
-            }
-        }
-    }
-    else{
-        return false;
-    }
-    return true;
-}
+const arrayUnic = [1,2,2,3,4,5,6,6];
 
-function deletePositiveNum(array){
-    outArr = [];
-    //console.log(Array.isArray(array));
-    //if array is object Array
-    if (Array.isArray(array)) {
-        // doing algorytm
-        for(let i = 0; i < array.length; i++){
-            //console.log(outArr.indexOf(array[i]));
-            if(array[i] < 0){
-                outArr.push(array[i]);
-            }
-            else{
-                continue;
-            }
-        }
-        //console.log();
-    }
-    else {
-        //console.log(array);
-        if( array < 0 ){
-            outArr.push(array);
-        }
-    }
-    return outArr;
-}
+const result = arrayUnic.filter((item,index) => arrayUnic.indexOf(item) === index);
 
-function calcElements(array){
-    let sum = 0;
-    if(Array.isArray(array)){
-        for(let i = 0; i < array.length; i++){
-            sum += array[i];
-        }
-    }
-    return sum;
-}
+console.log("Массив из уникальных чисел: ",result);//??
 
-function findSubarray(array){
-    outArr = [];
-    if(Array.isArray(array)){
-        for(let i = 0; i < array.length; i++){
-            if(Array.isArray(array[i])){
-                outArr.push(array[i]);
-            }
-            else{
-                continue;
-            }
-        }
-    }
-    return outArr;
-}
+//Функция возвращает массив в котором только отрицательные числа.
+const array2 = [-2,-1,0,1,2];
 
-function deleteShortWords(str){
-    outStr = "";
-    let temp = str.indexOf(' ');
-    console.log(temp);
-    while (str != ''){
-        if(temp > 3){
-            outStr = outStr + str.slice(0, temp) + ' ';
-        }
-        str = str.slice(++temp);
-        //console.log(str);
-        temp = str.indexOf(' ');
-        if(temp == -1 && str.length >= 3){
-            outStr = outStr + str;
-            break;
-        }
-        if(temp == -1 && str.length < 3){
-            break;
-        }
-        //console.log(temp);
-    }
-    return outStr;
-}
+const negativeArray = array2.filter(el => el < 0);
 
-let array = [];
+console.log("массив из отрицательных числел: ",negativeArray);
 
-let changedArr = [];
+/*Найдите сумму чисел в массиве */
 
-let liyArray = 5;
+const array3 = [-2,-1,0,1,2,10]; //10
+const reducer = (previousValue, currentValue) => previousValue + currentValue;
+const sum = array3.reduce(reducer);
+console.log("Сумма элементов массива", sum);
 
-let liyArray2 = ["kglsggjls","kglsggjls",'fkhgsdfkjhgsj'];
+/*Дан массив, в нем могут быть обычные элементы и подмассивы(например [1, 2, [3, 4], 5, {a: 7}]). Оставьте в нем только подмассивы.
+Работа со строками*/
+const likeMatrix = [1, 2, [3, 4], 5, {a: 7}];
+const subArray = likeMatrix.filter(el => Array.isArray(el) === true);
+console.log("Подмассивы:", subArray);
 
-let testArr1 = [5,6,6,1,1,7,8,];
-let testArr2 = [5,-6,6,1,1,7,8,];
-let testArr3 = [5,-6,1,1,-7,0,-8,10,63,-100];
-let testArr4 = [0,0,0,0,0,0,0,0,0,0,0];
+/*Верните количество слов в строке, длина которых больше 4 символов.*/
+const words = ['say', 'limit', 'elite', 'hi', 'destruction', ''];
 
-let testArr5 = [
-    5,
-    "someString",
-    "anyString?",
-    Object,
-    45436,
-    Object,
-    true,
-    false,
-    true,
-];
+const longWords = words.filter(word => word.length > 4);
 
-for (let i = 0; i < 5; i++) {
-    array[i] = i;
-    changedArr[i] = powerNum(i);
-}
+console.log("Строка из слов, длина которых больше 4 символов:", longWords);
 
-// console.log(array);
-// console.log(changedArr);
-// console.log("test0 function2: ",createOriginalArr(testArr1));
-// console.log("test1 function2: ",createOriginalArr(testArr2));
-// console.log("test2 function2: ",createOriginalArr(liyArray));
-// console.log("test3 function2: ",createOriginalArr(liyArray2));
-// console.log(typeof(liyArray2));
+/*
+Если в строке имеется шестизначное число(ни больше, ни меньше) - верните его,как результат функции. 
+Число может быть не отделено от других символов пробелами.
+*/
+const string2 =
+    '55555sgdsgsdg100000dhdfhsgdsgsdgsd45465456454gsd54454sgdsgsdgd555555';
+const regexp = /^\d{6}\D|\D\d{6}\D|\D\d{6}$/;
 
+const findSixNumber = (str, reg) => {
+    str = str.match(reg);//.replace(/[^+\d]/g, '')
+    return str[0].replace(/[^+\d]/g, ''); //Удаляет символы прилежащие к к строке из 6 цифр и возращает число
+};
 
-// console.log("test1 function3: ",isPositiveArr(testArr1)); //true
-// console.log("test2 function3: ",isPositiveArr(testArr2));
-// console.log("test3 function3: ",isPositiveArr(testArr3));
-// console.log("test4 function3: ",isPositiveArr(testArr4));
-// console.log("test5 function3: ",isPositiveArr(testArr5));
-// console.log("test6 function3: ",isPositiveArr(liyArray));
-// console.log("test7 function3: ",isPositiveArr(liyArray2));
-
-// console.log("test1 function4: ",deletePositiveNum(testArr1)); //
-// console.log("test2 function4: ",deletePositiveNum(testArr2)); // -6
-// console.log("test3 function4: ",deletePositiveNum(testArr3));
-// console.log("test4 function4: ",deletePositiveNum(testArr4));
-// console.log("test5 function4: ",deletePositiveNum(testArr5));
-// console.log("test6 function4: ",deletePositiveNum(liyArray));
-// console.log("test7 function4: ",deletePositiveNum(liyArray2));
-
-// console.log("test1 function5: ",calcElements(testArr1)); //
-// console.log("test2 function5: ",calcElements(testArr2)); // 
-// console.log("test3 function5: ",calcElements(testArr3));
-// console.log("test4 function5: ",calcElements(testArr4));
-// console.log("test5 function5: ",calcElements(testArr5));
-// console.log("test6 function5: ",calcElements(liyArray));
-// console.log("test7 function5: ",calcElements(liyArray2));
-
-let testArr6 = [
-    5,
-    6,
-    [1,2,3,],
-    6,
-    7,
-    [4,5,6,7,8,[1,2]],
-];
-//console.log(findSubarray(testArr6));
-
-let string1 = "Все деревья облетели. Зеленеют только ели. Днём и ночью дождик льёт. Грязь и лужи у ворот.";
-
-//console.log(deleteShortWords(string1));
-
-let string2 = "g546jsgd100000 sgld65456456456gsg";
-console.log(Number(string2));
+const output = findSixNumber(string2, regexp);
+console.log("Первое шестизначное число из строки: ",output);
