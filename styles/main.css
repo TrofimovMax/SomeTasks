@@ -16,7 +16,6 @@ section + section {
     margin-top: 3%;
 }
 .container{
-    padding: 20px,20px,20px,20px;
     max-width: 1280px;
     display: flex;
     text-align: center;
@@ -72,8 +71,8 @@ input[type="text"] {
     padding: 15px 32px;
     text-align: center;
     display: flex;
-    font-size: 16px;
     border-radius: 0.15cm;
+    line-height: 10px;
 }
 
 .control-btn + .control-btn{
@@ -140,11 +139,12 @@ input[type="text"] {
     padding: 5px;
     display: flex;
     text-align: center;
-    justify-content:space-betwee
+    justify-content: space-between;
 }
 .task-border + .task-border{
     margin-top: 15px;
 }
+
 .comletedtask-btn{
     margin-right: auto;
     border: 0cm;
@@ -163,16 +163,13 @@ input[type="text"] {
     background: url(/images/okClick.svg);
 }
 .name-task{
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 200px;
+    margin-left: 15px;
+    text-align: left;
 }
 .data-task{
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 75px;
+    margin-left: 15px;
 }
 .deltask-btn{
     margin-left: auto;
@@ -194,6 +191,25 @@ input[type="text"] {
 .deltask-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
+.nav-panel.container{
+    max-width: 300px;
+    display: flex;
+    text-align: center;
+    justify-content:space-between;
+}
+.nav-btn{
+    background-color: whitesmoke; 
+    width: 40px;
+    height: 40px;
+    border-radius: 0.15cm;
+    line-height: 5px;
+}
+.nav-btn:hover{
+    box-shadow: 2px 2px black, 0.5em 0 .4em gray;
+}
+.nav-btn + .nav-btn{
+    margin-left: 5px;
+}
 .first-page{
     background: url(/images/arowLeft.png);
     background-position:center;
@@ -209,9 +225,5 @@ input[type="text"] {
     color: inherit;
 
 }
-.task-border{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-}
+
 
