@@ -1,4 +1,11 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import trash from './images/trash.svg';
+import arrowUp from './images/arrowUp.png';
+import arrowDown from './images/arrowDown.png';
+import arrowLeft from './images/arrowLeft.png';
+import arrowRight from './images/arrowRight.png';
+import okBefore from './images/okBefore.svg';
+
 import './App.css';
 
 function App() {
@@ -29,17 +36,17 @@ function App() {
                     Sort by Date
                 </p>
                 <div className="updonw">
-                    <button className="updown-btn up-btn">
+                    <button className="updown-btn up-btn" style={{ backgroundImage: `url(${arrowUp})` } }>
     
                     </button>
-                    <button className="updown-btn down-btn">
+                    <button className="updown-btn down-btn" style={{ backgroundImage: `url(${arrowDown})` }}>
     
                     </button>
                 </div>
             </div>
             <div className="task-borders">
                 <div className="task-border">
-                    <button className="comletedtask-btn">
+                    <button className="comletedtask-btn" style={{ backgroundImage: `url(${okBefore})` }}>
                       
                     </button>
                     <div className="name-task">
@@ -53,8 +60,8 @@ function App() {
                             10.04.2020
                         </div>
                     </div>
-                    <button className="deltask-btn">
-                    
+                    <button className="deltask-btn" style={{ backgroundImage: `url(${trash})` }}>
+
                     </button>
                 </div>
 
@@ -123,7 +130,7 @@ function App() {
             </div>
 
             <div className="nav-panel">
-                    <button className="nav-btn first-page">
+                    <button className="nav-btn first-page" style={{ backgroundImage: `url(${arrowLeft})` }}>
                         
                     </button>
                     <button className="nav-btn text">
@@ -141,7 +148,7 @@ function App() {
                     <button className="nav-btn text">
                         <p>5</p>
                     </button>
-                    <button className="nav-btn last-page">
+                    <button className="nav-btn last-page" style={{ backgroundImage: `url(${arrowRight})` }}>
                         
                     </button>
             </div>

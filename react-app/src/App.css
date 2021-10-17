@@ -135,20 +135,18 @@ input[type="text"] {
     margin-top: 10px;
 }
 .up-btn{
-    /* background: url(/images/arrowUp.png);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit;
 }
 .up-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
 .down-btn{
-    /* background: url(/images/arrowDown.png);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit;
 }
 .down-btn:hover{
@@ -173,10 +171,9 @@ input[type="text"] {
     border: 0cm;
     width: 30px;
     height: 30px;
-    /* background: url(/images/okBefore.svg);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit; 
 }
 /* .comletedtask-btn:hover {
@@ -199,10 +196,9 @@ input[type="text"] {
     border: 0cm;
     width: 30px;
     height: 30px;
-    /* background: url(/images/trash.svg);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit;
 }
 /* .deltask-btn:active{
@@ -235,17 +231,15 @@ input[type="text"] {
 }
 
 .first-page{
-    /* background: url(/images/arowLeft.png);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit;
 }
 .last-page{
-    /* background: url(/images/arrowRight.png);
     background-position:center;
     background-repeat:no-repeat;
-    background-size: 100%; */
+    background-size: 100%;
     color: inherit;
 
 }
