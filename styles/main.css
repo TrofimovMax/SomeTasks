@@ -12,32 +12,28 @@ body{
     font-size: 20px; 
     font-family: 'Indie Flower', cursive; 
 }
-section + section {
-    margin-top: 3%;
-}
+
 .container{
     max-width: 1280px;
     display: flex;
     text-align: center;
     justify-content: center;
+    flex-direction: column;
 }
-.header.container{
-    height: 101px;
-}
+
 .logo{
     margin: 0;
     position: relative;
     font-family: 'Indie Flower', cursive;
     font-size: 101px;
 }
-
-.input-panel.container{
-    max-width: 300px;
+.input-panel{
+    margin-left: auto;
+    margin-right: auto;
 }
-
 .input{
     max-width: 300px;
-    height: 75px;
+    padding-top: 3%;
 }
 input[type="text"] {
     border: 1px solid #cccccc;
@@ -54,50 +50,42 @@ input[type="text"] {
     font-family: 'Indie Flower', cursive; 
  }
 
-.control-panel.container{
-    max-width: 300px;
+.control-panel{
+    padding-top: 3%;
+    width: 400px;
     display: flex;
-    text-align: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 .control-btn{
-    margin-top: 60px;
     justify-content: center;
     background-color: whitesmoke; 
     color: black;
-    width: 40px;
-    height: 40px;
-    padding: 15px 32px;
-    text-align: center;
-    display: flex;
+    height: 50px;
     border-radius: 0.15cm;
     line-height: 10px;
-}
-
-.control-btn + .control-btn{
-    margin-left: 5px;
 }
 .control-btn:hover {
     background: black; 
     color: whitesmoke;
 }
-.name-sort{
-    margin-top: 50px;
-    margin-left: 50px;
-    padding: 15px;
+.sort-panel{
+    width: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
+
 .updown{
-    margin-left: 15px;
-    position: relative;
     flex-direction: column;
 }
 .updown-btn{
-    margin-top: 40px;
     justify-content: center;
     background-color: whitesmoke; 
     color: black;
-    text-align: center;
     display: flex;
     font-size: 16px;
     border-radius: 0.15cm;
@@ -105,8 +93,7 @@ input[type="text"] {
     height: 30px;
 }
 .updown-btn + .updown-btn{
-    margin-top: 15px;
-    margin-left: 0px;
+    margin-top: 10px;
 }
 .up-btn{
     background: url(/images/arrowUp.png);
@@ -128,14 +115,11 @@ input[type="text"] {
 .down-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
-.task-panel.container{
-    max-width: 300px;
-    display: flex;
-    text-align: center;
-    justify-content:space-between;
+.task-borders{
+    padding-top: 3%;
 }
 .task-border{
-    border: 0.01rem solid;;
+    border: 2px solid;;
     padding: 5px;
     display: flex;
     text-align: center;
@@ -191,14 +175,17 @@ input[type="text"] {
 .deltask-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
-.nav-panel.container{
-    max-width: 300px;
+.nav-panel{
+    padding-top: 2%;
+    width: 300px;
     display: flex;
     text-align: center;
     justify-content:space-between;
+    margin-left: auto;
+    margin-right: auto;
 }
 .nav-btn{
-    background-color: whitesmoke; 
+    background-color: white; 
     width: 40px;
     height: 40px;
     border-radius: 0.15cm;
@@ -207,9 +194,7 @@ input[type="text"] {
 .nav-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
-.nav-btn + .nav-btn{
-    margin-left: 5px;
-}
+
 .first-page{
     background: url(/images/arowLeft.png);
     background-position:center;
@@ -225,5 +210,3 @@ input[type="text"] {
     color: inherit;
 
 }
-
-
