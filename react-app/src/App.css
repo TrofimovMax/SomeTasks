@@ -89,6 +89,16 @@ input[type="text"] {
     font-family: 'Indie Flower', cursive; 
  }
 
+.save-btn{
+    background-color: white; 
+    border-radius: 0.15cm;
+    line-height: 5px;
+}
+.save-btn:hover {
+    background: black; 
+    color: whitesmoke;
+}
+ 
 .control-panel{
     padding-top: 3%;
     width: 400px;
@@ -177,10 +187,10 @@ input[type="text"] {
     color: inherit; 
 }
 /* .comletedtask-btn:hover {
-    background: url(/images/okAfter.svg);
+    background: url({okAfter});
 }
 .comletedtask-btn:active {
-    background: url(/images/okClick.svg);
+    background: url({okClick});
 } */
 .name-task{
     width: 200px;
