@@ -66,15 +66,7 @@ body{
     font-family: 'Indie Flower', cursive;
     font-size: 101px;
 }
-.input-panel{
-    padding-top: 3%;
-    width: 400px;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .input{
     max-width: 300px;
     padding-top: 3%;
@@ -107,16 +99,6 @@ input[type="text"] {
     color: whitesmoke;
 }
  
-.control-panel{
-    padding-top: 3%;
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    margin-left: auto;
-    margin-right: auto;
-
-}
 .btns{
     margin-top: 3%;
     width: 200px;
@@ -165,21 +147,27 @@ input[type="text"] {
 .down-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
-.task-borders{
+.container-inner{
     padding-top: 3%;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin-left: auto;
+    margin-right: auto;
 }
-.task-border{
+.todo-border{
     border: 2px solid;;
     padding: 5px;
     display: flex;
     text-align: center;
     justify-content: space-between;
 }
-.task-border + .task-border{
+.todo-border + .todo-border{
     margin-top: 15px;
 }
 
-.comletedtask-btn{
+.comletedtodo-btn{
     margin-right: auto;
     border: 0cm;
     width: 30px;
@@ -190,22 +178,22 @@ input[type="text"] {
     background-size: 100%;
     color: inherit; 
 }
-/* .comletedtask-btn:hover {
+/* .comletedtodo-btn:hover {
     background: url({okAfter});
 }
-.comletedtask-btn:active {
+.comletedtodo-btn:active {
     background: url({okClick});
 } */
-.name-task{
+.name-todo{
     width: 200px;
     margin-left: 15px;
     text-align: left;
 }
-.data-task{
+.data-todo{
     width: 75px;
     margin-left: 15px;
 }
-.deltask-btn{
+.deltodo-btn{
     margin-left: auto;
     border: 0cm;
     width: 30px;
@@ -216,32 +204,23 @@ input[type="text"] {
     background-size: 100%;
     color: inherit;
 }
-/* .deltask-btn:active{
+/* .deltodo-btn:active{
     background: url(/images/trashAct.svg);
 }
-.deltask-btn:checked{
+.deltodo-btn:checked{
     background: url(/images/trashAct.svg);
 } */
-.deltask-btn:hover{
+.deltodo-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
-.nav-panel{
-    padding-top: 2%;
-    width: 300px;
-    display: flex;
-    text-align: center;
-    justify-content:space-between;
-    margin-left: auto;
-    margin-right: auto;
-}
-.nav-btn{
+.page-btn{
     background-color: white; 
     width: 40px;
     height: 40px;
     border-radius: 0.15cm;
     line-height: 5px;
 }
-.nav-btn:hover{
+.page-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
 

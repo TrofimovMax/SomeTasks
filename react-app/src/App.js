@@ -6,8 +6,8 @@ import React from 'react';
 
 import InputBlock from './InputBlock';
 import FilterPanel from './FilterPanel';
-import TaskBorder from './TaskBorder';
-import NavPanel from './NavPanel';
+import TodoList from './TodoList';
+import Pagination from './Pagination';
 
 function App() {
 
@@ -17,13 +17,11 @@ function App() {
                 ToDo
             </p>
             <InputBlock />
-            <div className="control-panel">
-                <FilterPanel />
-                <div className="task-borders">
-                    <TaskBorder />
-                </div>
+            <FilterPanel />
+            <div className="container-inner">
+                    <TodoList />
             </div>
-            <NavPanel />
+            <Pagination />
         </div>
     );
 }
