@@ -67,6 +67,11 @@ body{
     font-size: 101px;
 }
 .input-panel{
+    padding-top: 3%;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
     margin-left: auto;
     margin-right: auto;
 }
@@ -89,12 +94,15 @@ input[type="text"] {
     font-family: 'Indie Flower', cursive; 
  }
 
-.save-btn{
+.btn{
+    padding-top: 3%;
     background-color: white; 
     border-radius: 0.15cm;
     line-height: 5px;
+    font-size: 16px;
+    height: 40px;
 }
-.save-btn:hover {
+.btn:hover {
     background: black; 
     color: whitesmoke;
 }
@@ -109,17 +117,12 @@ input[type="text"] {
     margin-right: auto;
 
 }
-.control-btn{
-    justify-content: center;
-    background-color: whitesmoke; 
-    color: black;
-    height: 50px;
-    border-radius: 0.15cm;
-    line-height: 10px;
-}
-.control-btn:hover {
-    background: black; 
-    color: whitesmoke;
+.btns{
+    margin-top: 3%;
+    width: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 .sort-panel{
     width: 200px;
@@ -133,7 +136,7 @@ input[type="text"] {
 }
 .updown-btn{
     justify-content: center;
-    background-color: whitesmoke; 
+    background-color: white; 
     color: black;
     display: flex;
     font-size: 16px;
@@ -181,6 +184,7 @@ input[type="text"] {
     border: 0cm;
     width: 30px;
     height: 30px;
+    background-color: white; 
     background-position:center;
     background-repeat:no-repeat;
     background-size: 100%;
@@ -206,6 +210,7 @@ input[type="text"] {
     border: 0cm;
     width: 30px;
     height: 30px;
+    background-color: white; 
     background-position:center;
     background-repeat:no-repeat;
     background-size: 100%;

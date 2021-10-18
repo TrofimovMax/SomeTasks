@@ -1,7 +1,7 @@
 import React from 'react';
 import trash from './images/trash.svg';
 import okBefore from './images/okBefore.svg';
-import value from './SearchBlock'
+import value from './InputBlock'
 
 function TaskBorder(props) {
     return (

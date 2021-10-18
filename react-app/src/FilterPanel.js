@@ -5,14 +5,14 @@ import arrowDown from './images/arrowDown.png';
 function FilterPanel(props) {
     return (
         <div className="control-panel">
-                <div className="control-btns">
-                    <button className="control-btn text">
+                <div className="btns">
+                    <button className="btn text">
                         All
                     </button>
-                    <button className="control-btn text">
+                    <button className="btn text">
                         Done
                     </button>
-                    <button className="control-btn text">
+                    <button className="btn text">
                         Undone
                     </button>
                 </div>
