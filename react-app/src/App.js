@@ -1,15 +1,20 @@
-// import okAfter from './images/okAfter.svg';
-// import okClick from './images/okClick.svg';
-
+import React, { useState } from 'react';
 import './App.css';
-import React from 'react';
 
 import InputBlock from './InputBlock';
 import FilterPanel from './FilterPanel';
-import TodoList from './TodoList';
+import TodoItem from './TodoItem';
 import Pagination from './Pagination';
+import TodoList from './TodoList';
 
 function App() {
+    const [todoArr, setTodoArr] = useState('');
+
+    const data = [
+        {nameTodo: 'Going to learn React', timeTodo: '10.04.2020',  done: true, id: 1},
+        {nameTodo: 'Do something', timeTodo: '10.04.2020', done: false, id: 2},
+        {nameTodo: 'I tryed to learn it', timeTodo: '10.04.2020', done: false, id: 3}
+    ]
 
     return (
         <div className="container">
@@ -19,7 +24,7 @@ function App() {
             <InputBlock />
             <FilterPanel />
             <div className="container-inner">
-                    <TodoList />
+                    <TodoList posts={data}/>
             </div>
             <Pagination />
         </div>

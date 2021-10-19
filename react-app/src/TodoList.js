@@ -1,27 +1,23 @@
 import React from 'react';
-import trash from './images/trash.svg';
-import okBefore from './images/okBefore.svg';
-import value from './InputBlock'
+import TodoItem from './TodoItem';
 
-function TodoList(props) {
+
+function TodoList({posts}) {
+    const elements = posts.map( (item) => {
+        // Простой способ проверки на объект + содержится ли в нем информация
+        if ( typeof item === 'object'){ 
+            const {id, ...itemProps} = item;
+            return (
+                <li key = {id} className='list-group-item'>
+                    <TodoItem {...itemProps}/>
+                </li>
+            )
+        }
+    }) 
     return (
-        <div className="todo-border">
-                <button className="comletedtodo-btn" style={{ backgroundImage: `url(${okBefore})` }} />
-                <div className="name-todo">
-                    <div className="name-todo-inner text">
-                        {value}
-                    </div>
-                </div>
-
-                <div className="data-todo">
-                    <div className="data-todo-inner text">
-                        10.04.2020
-                    </div>
-                </div>
-                <button className="deltodo-btn" style={{ backgroundImage: `url(${trash})` }}>
-
-                </button>
-            </div>
+        <ul>
+            {elements}
+        </ul>
     );
 }
 
