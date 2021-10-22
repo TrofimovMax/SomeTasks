@@ -3,28 +3,49 @@ import './App.css';
 
 import InputBlock from './InputBlock';
 import FilterPanel from './FilterPanel';
-import TodoItem from './TodoItem';
+//import TodoItem from './TodoItem';
 import Pagination from './Pagination';
 import TodoList from './TodoList';
 
 function App() {
-    const [todoArr, setTodoArr] = useState('');
+    const [listTodo, setListTodo] = useState([]);
+    const [taskTodo, setTaskTodo] = useState({});
 
-    const data = [
-        {nameTodo: 'Going to learn React', timeTodo: '10.04.2020',  done: true, id: 1},
-        {nameTodo: 'Do something', timeTodo: '10.04.2020', done: false, id: 2},
-        {nameTodo: 'I tryed to learn it', timeTodo: '10.04.2020', done: false, id: 3}
-    ]
+
+    const addTask = ({ target }) => {
+        const { name, value } = target;
+        const timeUNIX = Date.now();
+        const date = new Date(timeUNIX);
+        setTaskTodo((prev) => ({ ...prev, id: Date.now(), [name]: value , time:{day: date.getDate(), month:date.getMonth() , year:date.getFullYear() } }));
+    };
+
+    const addTaskInList = (event)  => {
+        event.preventDefault();
+        if (!taskTodo.title) return;
+        setListTodo((prev) => [taskTodo, ...prev]);
+        setTaskTodo({});
+    };
+
+    const deleteTask = (taskIdToRemove) => {
+        setListTodo((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+    };
+
 
     return (
         <div className="container">
             <p className="logo">
                 ToDo
             </p>
-            <InputBlock />
+            <InputBlock 
+            addTask = {addTask}
+            taskTodo={taskTodo}
+            addTaskInList = {addTaskInList}
+            />
             <FilterPanel />
             <div className="container-inner">
-                    <TodoList posts={data}/>
+                <TodoList 
+                listTodo = {listTodo}
+                deleteTask = {deleteTask}/>
             </div>
             <Pagination />
         </div>

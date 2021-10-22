@@ -1,19 +1,20 @@
 import React from 'react';
-import { useState } from "react"
 
-function InputBlock(props) {
-    const [value, setValue] = useState('');
+export default function InputBlock({addTask, taskTodo, addTaskInList}) {
     return (
         <div className="container-inner">
-            <input value={value} onChange={(e) => setValue(e.target.value)} className="input" type="text"/>
-            <button className="btn text" onClick={(event) => { showValue(value); }}>Add</button>
+            <input 
+            className="input"
+            type="text"
+            name="title"
+            placeholder="What do you want to do?"
+            value={taskTodo.title || ""}
+            onChange={addTask}/>
+            <button className="btn text" onClick={addTaskInList}>Add</button>
         </div>
     );
 }
 
-
-function showValue(value){
-    alert(value);
-}
-
-export default InputBlock
+        
+        
+        
