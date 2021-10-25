@@ -8,21 +8,19 @@ import TodoList from './TodoList';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
-
-    const addTaskInList = (nameTodo)  => {
-        console.log(nameTodo);
+    const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
         const timeUNIX = Date.now();
         const date = new Date(timeUNIX);
-        const newTask = { 
-            id: Date.now(), 
+        const newTask = {
+            id: Date.now(),
             name: nameTodo,
-            time:{
-                day: date.getDate(), 
-                month:date.getMonth(), 
-                year:date.getFullYear()
+            time: {
+                day: date.getDate(),
+                month: date.getMonth(),
+                year: date.getFullYear()
             },
-            completed: false 
+            completed: true
         };
         setListTodo((prev) => [newTask, ...prev]);
     };
@@ -31,20 +29,32 @@ function App() {
         setListTodo((prev) => prev.filter((task) => task.id !== taskIdToRemove));
     };
 
+    const changeCompleted = (id) => {
+        console.log(id);
+        setListTodo(prev => prev.map((item) => {
+            if (item.id === id) {
+                item.completed = !item.completed
+            }
+            return item
+        }))
+    }
+    console.table(listTodo);
+
 
     return (
         <div className="container">
             <p className="logo">
                 ToDo
             </p>
-            <InputBlock 
-            addTaskInList = {addTaskInList}
+            <InputBlock
+                addTaskInList={addTaskInList}
             />
             <FilterPanel />
             <div className="container-inner">
-                <TodoList 
-                listTodo = {listTodo}
-                deleteTask = {deleteTask}/>
+                <TodoList
+                    listTodo={listTodo}
+                    changeCompleted={changeCompleted}
+                    deleteTask={deleteTask} />
             </div>
             <Pagination />
         </div>

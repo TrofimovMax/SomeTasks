@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function InputBlock({addTaskInList}) {
-    const [nameTodo, setnameTodo] = useState({});
+    const [nameTodo, setnameTodo] = useState('');
 
     function handleChange(e) {
         setnameTodo(e.target.value);
