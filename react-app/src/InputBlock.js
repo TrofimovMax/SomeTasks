@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function InputBlock({addTask, taskTodo, addTaskInList}) {
+export default function InputBlock({addTaskInList}) {
+    const [nameTodo, setnameTodo] = useState({});
+
+    function handleChange(e) {
+        setnameTodo(e.target.value);
+    }  
+    const handleAddInTask = (e) => {
+        e.preventDefault();
+        addTaskInList(nameTodo);
+        setnameTodo('')
+    }
+
     return (
         <div className="container-inner">
             <input 
@@ -8,13 +19,10 @@ export default function InputBlock({addTask, taskTodo, addTaskInList}) {
             type="text"
             name="title"
             placeholder="What do you want to do?"
-            value={taskTodo.title || ""}
-            onChange={addTask}/>
-            <button className="btn text" onClick={addTaskInList}>Add</button>
+            value={nameTodo}
+            onChange={handleChange}/>
+            <button className="btn text" onClick={handleAddInTask}>Add</button>
         </div>
     );
-}
-
-        
-        
+}   
         

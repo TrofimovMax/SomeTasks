@@ -8,23 +8,23 @@ import TodoList from './TodoList';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
-    const [taskTodo, setTaskTodo] = useState({});
 
-
-    const addTask = ({ target }) => {
-        const { name, value } = target;
+    const addTaskInList = (nameTodo)  => {
+        console.log(nameTodo);
+        if (!nameTodo) return;
         const timeUNIX = Date.now();
         const date = new Date(timeUNIX);
-        setTaskTodo((prev) => ({ ...prev, id: Date.now(), [name]: value , 
-            time:{day: date.getDate(), month:date.getMonth() , year:date.getFullYear() }, 
-            done: false }));
-    };
-
-    const addTaskInList = (event)  => {
-        event.preventDefault();
-        if (!taskTodo.title) return;
-        setListTodo((prev) => [taskTodo, ...prev]);
-        setTaskTodo({});
+        const newTask = { 
+            id: Date.now(), 
+            name: nameTodo,
+            time:{
+                day: date.getDate(), 
+                month:date.getMonth(), 
+                year:date.getFullYear()
+            },
+            completed: false 
+        };
+        setListTodo((prev) => [newTask, ...prev]);
     };
 
     const deleteTask = (taskIdToRemove) => {
@@ -38,14 +38,11 @@ function App() {
                 ToDo
             </p>
             <InputBlock 
-            addTask = {addTask}
-            taskTodo={taskTodo}
             addTaskInList = {addTaskInList}
             />
             <FilterPanel />
             <div className="container-inner">
                 <TodoList 
-                taskTodo = {taskTodo}
                 listTodo = {listTodo}
                 deleteTask = {deleteTask}/>
             </div>

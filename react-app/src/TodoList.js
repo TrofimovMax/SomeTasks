@@ -4,9 +4,9 @@ import okBefore from './images/okBefore.svg';
 import okClick from './images/okBefore.svg';
 
 
-export default function TodoList({taskTodo, listTodo, deleteTask}) {
+export default function TodoList({listTodo, deleteTask}) {
     let classDone = okBefore;
-    if (taskTodo.done) {
+    if (listTodo.done) {
         classDone = okClick;
     }
 
@@ -15,13 +15,13 @@ export default function TodoList({taskTodo, listTodo, deleteTask}) {
     } else {
         return (
             <ul className='list-group-item'>
-                {listTodo.map(({ id, title, time, done }) => {
+                {listTodo.map(({ id, name, time, completed }) => {
                     return (
                         <li key={id}>
                             <div className="todo-border">
                                 <button className="comletedtodo-btn" onClick={() => deleteTask(id)} style={{ backgroundImage: `url(${classDone})` }} />
                                 <div className="name-todo text">
-                                    {title}
+                                    {name}
                                 </div>
 
                                 <div className="data-todo text">
