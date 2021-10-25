@@ -1,33 +1,31 @@
 import React from 'react';
+
 import trash from './images/trash.svg';
 import okBefore from './images/okBefore.svg';
-import okClick from './images/okBefore.svg';
+import okClick from './images/okClick.svg';
 
+export default function TodoItem({id, name, time, completed, changeCompleted, deleteTask }) {
 
-export default function TodoItem({ title, time, id, done = false, deleteTask }) {
-
-    let classDone = okBefore;
-    if (done) {
-        classDone = okClick;
+    const isCompletedd = (completed) => {
+        return completed ? okClick : okBefore
     }
+
     return (
-        <div className="todo-border" key={id}>
-            <button className="comletedtodo-btn" style={{ backgroundImage: `url(${classDone})` }} />
-            <div className="name-todo">
-                <div className="name-todo-inner text">
-                    {title}
+        <li key={id}>
+            <div className="todo-border">
+                <button className="comletedtodo-btn" onClick={() => changeCompleted(id)}
+                    style={{ backgroundImage: `url(${isCompletedd(completed)})` }} />
+                <div className="name-todo text">
+                    {name}
                 </div>
-            </div>
-
-            <div className="data-todo">
-                <div className="data-todo-inner text">
-                    {time}
+                <div className="data-todo text">
+                    {time.day}/{time.month + 1}/{time.year}
                 </div>
-            </div>
-            <button className="deltodo-btn" style={{ backgroundImage: `url(${trash})` }}>
+                <button className="deltodo-btn" onClick={() => deleteTask(id)} style={{ backgroundImage: `url(${trash})` }}>
 
-            </button>
-        </div>
+                </button>
+            </div>
+        </li>
     );
 }
 
