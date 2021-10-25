@@ -147,6 +147,12 @@ input[type="text"] {
 .down-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
+
+.list-group-item{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
 .container-inner{
     padding-top: 3%;
     width: 400px;
@@ -188,9 +194,9 @@ input[type="text"] {
     width: 200px;
     margin-left: 15px;
     text-align: left;
+    overflow: hidden;
 }
 .data-todo{
-    width: 75px;
     margin-left: 15px;
 }
 .deltodo-btn{

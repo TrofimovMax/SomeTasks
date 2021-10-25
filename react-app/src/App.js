@@ -3,7 +3,6 @@ import './App.css';
 
 import InputBlock from './InputBlock';
 import FilterPanel from './FilterPanel';
-//import TodoItem from './TodoItem';
 import Pagination from './Pagination';
 import TodoList from './TodoList';
 
@@ -16,7 +15,9 @@ function App() {
         const { name, value } = target;
         const timeUNIX = Date.now();
         const date = new Date(timeUNIX);
-        setTaskTodo((prev) => ({ ...prev, id: Date.now(), [name]: value , time:{day: date.getDate(), month:date.getMonth() , year:date.getFullYear() } }));
+        setTaskTodo((prev) => ({ ...prev, id: Date.now(), [name]: value , 
+            time:{day: date.getDate(), month:date.getMonth() , year:date.getFullYear() }, 
+            done: false }));
     };
 
     const addTaskInList = (event)  => {
@@ -44,6 +45,7 @@ function App() {
             <FilterPanel />
             <div className="container-inner">
                 <TodoList 
+                taskTodo = {taskTodo}
                 listTodo = {listTodo}
                 deleteTask = {deleteTask}/>
             </div>
