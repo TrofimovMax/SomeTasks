@@ -8,7 +8,8 @@ import TodoList from './TodoList';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
-    const [filterState, setfilterState] = useState('All');
+    const [filterState, setFilterState] = useState('All');
+    const [timeFilterState, setTimeFilterState] = useState('Up');
 
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
@@ -44,17 +45,15 @@ function App() {
         }))
     }
 
-    const filterDoneTask = () => {
-        setfilterState('Done');
+    const updateFilter = (name) => {
+        setFilterState(name);
     }
 
-    const filterUnDoneTask = () => {
-        setfilterState('Undone');
+    const updateTimeFilter = (time) => {
+        setTimeFilterState(time);
     }
 
-    const filterAllTask = () => {
-        setfilterState('All');
-    }
+
 
     return (
         <div className="container">
@@ -65,14 +64,14 @@ function App() {
                 addTaskInList={addTaskInList}
             />
             <FilterPanel 
-                filterAllTask = {filterAllTask}
-                filterDoneTask = {filterDoneTask}
-                filterUnDoneTask = {filterUnDoneTask}
+                updateFilter = {updateFilter}
+                updateTimeFilter = {updateTimeFilter}
             />
             <div className="container-inner">
                 <TodoList
                     listTodo={listTodo}
                     filterState = {filterState}
+                    timeFilterState = {timeFilterState}
                     changeCompleted={changeCompleted}
                     deleteTask={deleteTask} />
             </div>
