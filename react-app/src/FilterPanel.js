@@ -2,17 +2,17 @@ import React from 'react';
 import arrowUp from './images/arrowUp.png';
 import arrowDown from './images/arrowDown.png';
 
-function FilterPanel(props) {
+function FilterPanel({filterAllTask,filterDoneTask, filterUnDoneTask}) {
     return (
         <div className="container-inner">
             <div className="btns">
-                <button className="btn text">
+                <button className="btn text" onClick={() => filterAllTask()}>
                     All
                 </button>
-                <button className="btn text">
+                <button className="btn text" onClick={() => filterDoneTask()}>
                     Done
                 </button>
-                <button className="btn text">
+                <button className="btn text" onClick={() => filterUnDoneTask()}>
                     Undone
                 </button>
             </div>
@@ -21,12 +21,11 @@ function FilterPanel(props) {
                     Sort by Date
                 </p>
                 <div className="updonw">
-                    <button className="updown-btn up-btn" style={{ backgroundImage: `url(${arrowUp})` }}>
+                    <button className="updown-btn up-btn" 
+                    style={{ backgroundImage: `url(${arrowUp})` }}/>
 
-                    </button>
-                    <button className="updown-btn down-btn" style={{ backgroundImage: `url(${arrowDown})` }}>
-
-                    </button>
+                    <button className="updown-btn down-btn" 
+                    style={{ backgroundImage: `url(${arrowDown})` }}/>
                 </div>
             </div>
         </div>

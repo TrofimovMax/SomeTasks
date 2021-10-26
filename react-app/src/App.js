@@ -8,6 +8,8 @@ import TodoList from './TodoList';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
+    const [filterState, setfilterState] = useState('All');
+
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
         const timeUNIX = Date.now();
@@ -20,7 +22,7 @@ function App() {
                 month: date.getMonth(),
                 year: date.getFullYear()
             },
-            completed: true
+            completed: false
         };
         setListTodo((prev) => [newTask, ...prev]);
     };
@@ -31,7 +33,6 @@ function App() {
 
     const changeCompleted = (id) => {
         setListTodo(prev => prev.map(item => {
-            console.log(item.completed);
             if (item.id === id) {                               
                 // console.log({...item})
                 // item.completed = !item.completed
@@ -43,6 +44,18 @@ function App() {
         }))
     }
 
+    const filterDoneTask = () => {
+        setfilterState('Done');
+    }
+
+    const filterUnDoneTask = () => {
+        setfilterState('Undone');
+    }
+
+    const filterAllTask = () => {
+        setfilterState('All');
+    }
+
     return (
         <div className="container">
             <p className="logo">
@@ -51,10 +64,15 @@ function App() {
             <InputBlock
                 addTaskInList={addTaskInList}
             />
-            <FilterPanel />
+            <FilterPanel 
+                filterAllTask = {filterAllTask}
+                filterDoneTask = {filterDoneTask}
+                filterUnDoneTask = {filterUnDoneTask}
+            />
             <div className="container-inner">
                 <TodoList
                     listTodo={listTodo}
+                    filterState = {filterState}
                     changeCompleted={changeCompleted}
                     deleteTask={deleteTask} />
             </div>
