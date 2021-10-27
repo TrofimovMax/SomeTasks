@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 
 export default function InputBlock({addTaskInList}) {
-    const [nameTodo, setnameTodo] = useState('');
+    const [nameTodo, setNameTodo] = useState('');
 
     function handleChange(e) {
-        setnameTodo(e.target.value);
-    }  
+        setNameTodo(e.target.value);
+    }
+
     const handleAddInTask = (e) => {
         e.preventDefault();
         addTaskInList(nameTodo);
-        setnameTodo('')
+        setNameTodo('')
     }
 
     return (
-        <div className="container-inner">
+        <form className="container-inner" onSubmit={(e)=>handleAddInTask(e) }>
             <input 
             className="input"
             type="text"
@@ -22,7 +23,7 @@ export default function InputBlock({addTaskInList}) {
             value={nameTodo}
             onChange={handleChange}/>
             <button className="btn text" onClick={handleAddInTask}>Add</button>
-        </div>
+        </form>
     );
 }   
         

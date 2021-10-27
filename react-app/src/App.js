@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './App.css';
 
 import InputBlock from './InputBlock';
@@ -10,11 +10,6 @@ function App() {
     const [listTodo, setListTodo] = useState([]);
     const [filterState, setFilterState] = useState('All');
     const [timeFilterState, setTimeFilterState] = useState('Up');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [todoPerPage] = useState(5);
-    const lastTodoIndex = currentPage * todoPerPage;
-    const firstTodoIndex = lastTodoIndex - todoPerPage;
-    const currentTodo = listTodo.slice(firstTodoIndex, lastTodoIndex);
 
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
@@ -62,6 +57,31 @@ function App() {
         setCurrentPage(pageNumber);
     }
 
+    const filterList = (listTodo, filterState, timeFilterState) => {
+        const str = filterState + timeFilterState;
+        switch (str) {
+            case 'DoneUp':
+                return listTodo.filter((item) => item.completed === true);
+            case 'UndoneUp':
+                return listTodo.filter((item) => item.completed !== true);
+            case 'DoneDown':
+                return listTodo.filter((item) => item.completed === true).reverse();
+            case 'UndoneDown':
+                return listTodo.filter((item) => item.completed !== true).reverse();
+            case 'AllDown':
+                return listTodo.slice().reverse();
+            default:
+              return listTodo;
+          }
+    }
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const TODO_PER_PAGE = 5;
+    const lastTodoIndex = currentPage * TODO_PER_PAGE;
+    const firstTodoIndex = lastTodoIndex - TODO_PER_PAGE;
+    const filteredList = filterList(listTodo, filterState, timeFilterState);
+    const currentTodo = filteredList.slice(firstTodoIndex, lastTodoIndex);
+
     return (
         <div className="container">
             <p className="logo">
@@ -76,15 +96,16 @@ function App() {
             />
             <div className="container-inner">
                 <TodoList
-                    listTodo={listTodo}
+                    listTodo={currentTodo}
                     filterState = {filterState}
                     timeFilterState = {timeFilterState}
                     changeCompleted={changeCompleted}
-                    deleteTask={deleteTask} />
+                    deleteTask={deleteTask}
+                    filterList ={filterList} />
             </div>
             <Pagination 
-                todoPerPage = {todoPerPage}
-                totalTodo = {listTodo.length}
+                TODO_PER_PAGE = {TODO_PER_PAGE}
+                totalTodo = {filteredList.length}
                 paginate = {paginate}
             />
         </div>
