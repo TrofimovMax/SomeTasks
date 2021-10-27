@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import InputBlock from './InputBlock';
@@ -10,6 +10,11 @@ function App() {
     const [listTodo, setListTodo] = useState([]);
     const [filterState, setFilterState] = useState('All');
     const [timeFilterState, setTimeFilterState] = useState('Up');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [todoPerPage] = useState(5);
+    const lastTodoIndex = currentPage * todoPerPage;
+    const firstTodoIndex = lastTodoIndex - todoPerPage;
+    const currentTodo = listTodo.slice(firstTodoIndex, lastTodoIndex);
 
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
@@ -53,7 +58,9 @@ function App() {
         setTimeFilterState(time);
     }
 
-
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
 
     return (
         <div className="container">
@@ -75,7 +82,11 @@ function App() {
                     changeCompleted={changeCompleted}
                     deleteTask={deleteTask} />
             </div>
-            <Pagination />
+            <Pagination 
+                todoPerPage = {todoPerPage}
+                totalTodo = {listTodo.length}
+                paginate = {paginate}
+            />
         </div>
     );
 }
