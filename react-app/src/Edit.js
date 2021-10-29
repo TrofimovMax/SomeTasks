@@ -6,7 +6,16 @@ export default function Edit({ id, name, changeName }) {
     const [editingText, seteditingText] = useState('');
 
     function handleEditChange(e) {
-        seteditingText(e.target.value);
+        if(e.key === ' ' && editingText === '') return;
+        if(e.key === 'Enter'){
+            updateTodoValue(id, editingText);
+            return;
+        }
+        if(e.key === 'Escape'){
+            changeEditMode();
+            return;
+        }
+        seteditingText(editingText + e.key);
     }
 
     const changeEditMode = () => {
@@ -23,10 +32,11 @@ export default function Edit({ id, name, changeName }) {
         return (
             <>
                 <input 
+                    id = 'EditInput'
                     type='text'
                     autoFocus
                     value={editingText}
-                    onChange={handleEditChange}
+                    onKeyDown={handleEditChange}
                 />
                 <button className='btn text' onClick={() => updateTodoValue(id, editingText)}>OK</button>
             </>

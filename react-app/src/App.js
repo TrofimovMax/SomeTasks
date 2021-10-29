@@ -70,9 +70,9 @@ function App() {
             case 'UndoneUp':
                 return listTodo.filter((item) => item.completed !== true);
             case 'DoneDown':
-                return listTodo.filter((item) => item.completed === true).reverse();
+                return listTodo.slice().reverse().filter((item) => item.completed === true);
             case 'UndoneDown':
-                return listTodo.filter((item) => item.completed !== true).reverse();
+                return listTodo.slice().reverse().filter((item) => item.completed !== true);
             case 'AllDown':
                 return listTodo.slice().reverse();
             default:
