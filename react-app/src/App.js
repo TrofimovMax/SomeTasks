@@ -35,10 +35,6 @@ function App() {
     const changeCompleted = (id) => {
         setListTodo(prev => prev.map(item => {
             if (item.id === id) {                               
-                // console.log({...item})
-                // item.completed = !item.completed
-                // console.log({...item})
-                // return item;
                 return {...item, completed: !item.completed}
             }
             return item

@@ -19,7 +19,9 @@ export default function Pagination({ TODO_PER_PAGE, totalTodo, paginate }) {
                             <ul className='container-inner list-group-item'>
                                 <li className='page-item'>
                                     <button className="page-btn first-page"
-                                        style={{ backgroundImage: `url(${arrowLeft})` }} />
+                                        style={{ backgroundImage: `url(${arrowLeft})` }} 
+                                        onClick={() => paginate(1)}
+                                        />
                                 </li>
                                 {
                                     pageNumbers.map(number => {
@@ -35,7 +37,9 @@ export default function Pagination({ TODO_PER_PAGE, totalTodo, paginate }) {
                                 }
                                 <li className='page-item'>
                                     <button className="page-btn last-page"
-                                        style={{ backgroundImage: `url(${arrowRight})` }} />
+                                        style={{ backgroundImage: `url(${arrowRight})` }} 
+                                        onClick={() => paginate(totalTodo / TODO_PER_PAGE)}
+                                        />
                                 </li>
                             </ul>
                         </div>
