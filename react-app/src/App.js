@@ -41,6 +41,15 @@ function App() {
         }))
     }
 
+    const changeName = (id, editedName) => {
+        setListTodo(prev => prev.map(item => {
+            if (item.id === id) {                               
+                return {...item, name: editedName}
+            }
+            return item
+        }))
+    } 
+
     const updateFilter = (name) => {
         setFilterState(name);
     }
@@ -96,6 +105,7 @@ function App() {
                     filterState = {filterState}
                     timeFilterState = {timeFilterState}
                     changeCompleted={changeCompleted}
+                    changeName = {changeName}
                     deleteTask={deleteTask}
                     filterList ={filterList} />
             </div>

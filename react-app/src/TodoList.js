@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-export default function TodoList({ listTodo, filterState, timeFilterState, changeCompleted, deleteTask, filterList}) {
+export default function TodoList({ listTodo, filterState, timeFilterState, changeCompleted, changeName, deleteTask, filterList}) {
 
 
     if (listTodo.length === 0) {
@@ -19,6 +19,7 @@ export default function TodoList({ listTodo, filterState, timeFilterState, chang
                                 time={time}
                                 completed={completed}
                                 changeCompleted={changeCompleted}
+                                changeName = {changeName}
                                 deleteTask={deleteTask} />
                         )
                     })
