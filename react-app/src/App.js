@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import InputBlock from './InputBlock';
@@ -34,8 +34,8 @@ function App() {
 
     const changeCompleted = (id) => {
         setListTodo(prev => prev.map(item => {
-            if (item.id === id) {                               
-                return {...item, completed: !item.completed}
+            if (item.id === id) {
+                return { ...item, completed: !item.completed }
             }
             return item
         }))
@@ -43,12 +43,12 @@ function App() {
 
     const changeName = (id, editedName) => {
         setListTodo(prev => prev.map(item => {
-            if (item.id === id) {                               
-                return {...item, name: editedName}
+            if (item.id === id) {
+                return { ...item, name: editedName }
             }
             return item
         }))
-    } 
+    }
 
     const updateFilter = (name) => {
         setFilterState(name);
@@ -76,8 +76,17 @@ function App() {
             case 'AllDown':
                 return listTodo.slice().reverse();
             default:
-              return listTodo;
-          }
+                return listTodo;
+        }
+    }
+
+    const createCurrentTodo = (filteredList, lastTodoIndex, firstTodoIndex) => {
+        if(timeFilterState === 'Up'){
+            return filteredList.slice(firstTodoIndex, lastTodoIndex);
+        }
+        else{
+            return filteredList.slice(firstTodoIndex, lastTodoIndex).reverse();
+        }   
     }
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -85,7 +94,7 @@ function App() {
     const lastTodoIndex = currentPage * TODO_PER_PAGE;
     const firstTodoIndex = lastTodoIndex - TODO_PER_PAGE;
     const filteredList = filterList(listTodo, filterState, timeFilterState);
-    const currentTodo = filteredList.slice(firstTodoIndex, lastTodoIndex);
+    const currentTodo = createCurrentTodo(filteredList, lastTodoIndex, firstTodoIndex);
 
     return (
         <div className="container">
@@ -95,24 +104,24 @@ function App() {
             <InputBlock
                 addTaskInList={addTaskInList}
             />
-            <FilterPanel 
-                updateFilter = {updateFilter}
-                updateTimeFilter = {updateTimeFilter}
+            <FilterPanel
+                updateFilter={updateFilter}
+                updateTimeFilter={updateTimeFilter}
             />
             <div className="container-inner">
                 <TodoList
                     listTodo={currentTodo}
-                    filterState = {filterState}
-                    timeFilterState = {timeFilterState}
+                    filterState={filterState}
+                    timeFilterState={timeFilterState}
                     changeCompleted={changeCompleted}
-                    changeName = {changeName}
+                    changeName={changeName}
                     deleteTask={deleteTask}
-                    filterList ={filterList} />
+                    filterList={filterList} />
             </div>
-            <Pagination 
-                TODO_PER_PAGE = {TODO_PER_PAGE}
-                totalTodo = {filteredList.length}
-                paginate = {paginate}
+            <Pagination
+                TODO_PER_PAGE={TODO_PER_PAGE}
+                totalTodo={filteredList.length}
+                paginate={paginate}
             />
         </div>
     );
