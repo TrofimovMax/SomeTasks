@@ -36,3 +36,208 @@
     transform: rotate(360deg);
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body{
+    background: white;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text{
+    color: black; 
+    font-size: 20px; 
+    font-family: 'Indie Flower', cursive; 
+}
+
+.container{
+    max-width: 1280px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo{
+    margin: 0;
+    position: relative;
+    font-family: 'Indie Flower', cursive;
+    font-size: 101px;
+}
+
+.input{
+    max-width: 300px;
+    padding-top: 3%;
+}
+input[type="text"] {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px; 
+    -khtml-border-radius: 3px; 
+    background: #ffffff !important; 
+    outline: none; 
+    height: 25px; 
+    width: 250px; 
+    color: black; 
+    font-size: 24px; 
+    font-family: 'Indie Flower', cursive; 
+ }
+
+.btn{
+    background-color: white; 
+    border-radius: 0.15cm;
+    line-height: 5px;
+    font-size: 16px;
+    height: 40px;
+}
+.btn:hover {
+    background: black; 
+    color: whitesmoke;
+}
+ 
+.btns{
+    margin-top: 3%;
+    width: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.sort-panel{
+    width: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.updown{
+    flex-direction: column;
+}
+.updown-btn{
+    justify-content: center;
+    background-color: white; 
+    color: black;
+    display: flex;
+    font-size: 16px;
+    border-radius: 0.15cm;
+    width: 30px;
+    height: 30px;
+}
+.updown-btn + .updown-btn{
+    margin-top: 10px;
+}
+.up-btn{
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit;
+}
+.up-btn:hover{
+    box-shadow: 2px 2px black, 0.5em 0 .4em gray;
+}
+.down-btn{
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit;
+}
+.down-btn:hover{
+    box-shadow: 2px 2px black, 0.5em 0 .4em gray;
+}
+
+.list-group-item{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.container-inner{
+    padding-top: 3%;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+.todo-border{
+    border: 2px solid;;
+    padding: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+.todo-border + .todo-border{
+    margin-top: 15px;
+}
+
+.comletedtodo-btn{
+    margin-right: auto;
+    border: 0cm;
+    width: 30px;
+    height: 30px;
+    background-color: white; 
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit; 
+}
+/* .comletedtodo-btn:hover {
+    background: url({okAfter});
+}
+.comletedtodo-btn:active {
+    background: url({okClick});
+} */
+.name-todo{
+    width: 200px;
+    margin-left: 15px;
+    text-align: left;
+    overflow: hidden;
+}
+.data-todo{
+    margin-left: 15px;
+}
+.deltodo-btn{
+    margin-left: auto;
+    border: 0cm;
+    width: 30px;
+    height: 30px;
+    background-color: white; 
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit;
+}
+/* .deltodo-btn:active{
+    background: url(/images/trashAct.svg);
+}
+.deltodo-btn:checked{
+    background: url(/images/trashAct.svg);
+} */
+.deltodo-btn:hover{
+    box-shadow: 2px 2px black, 0.5em 0 .4em gray;
+}
+.page-btn{
+    background-color: white; 
+    width: 40px;
+    height: 40px;
+    border-radius: 0.15cm;
+    line-height: 5px;
+}
+.page-btn:hover{
+    box-shadow: 2px 2px black, 0.5em 0 .4em gray;
+}
+
+.first-page{
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit;
+}
+.last-page{
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: 100%;
+    color: inherit;
+}
