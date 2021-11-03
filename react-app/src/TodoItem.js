@@ -5,26 +5,26 @@ import trash from './images/trash.svg';
 import okBefore from './images/okBefore.svg';
 import okClick from './images/okClick.svg';
 
-export default function TodoItem({ id, name, time, completed, changeCompleted, changeName, deleteTask }) {
+export default function TodoItem({ todo, changeCompleted, changeName, deleteTask }) {
 
     const isCompletedd = (completed) => {
         return completed ? okClick : okBefore
     }
 
     return (
-        <li key={id}>
+        <li key={todo.uuid}>
             <div className="todo-border">
-                <button className="comletedtodo-btn" onClick={() => changeCompleted(id)}
-                    style={{ backgroundImage: `url(${isCompletedd(completed)})` }} />
+                <button className="comletedtodo-btn" onClick={() => changeCompleted(todo.uuid)}
+                    style={{ backgroundImage: `url(${isCompletedd(todo.done)})` }} />
                 <Edit 
-                    id = {id}
-                    name = {name}
+                    id = {todo.uuid}
+                    name = {todo.name}
                     changeName = {changeName}
                 />
                 <div className="data-todo text">
-                    {time.day}/{time.month + 1}/{time.year}
+                    {todo.createdAt.slice(0, 10)}
                 </div>
-                <button className="deltodo-btn" onClick={() => deleteTask(id)} style={{ backgroundImage: `url(${trash})` }}>
+                <button className="deltodo-btn" onClick={() => deleteTask(todo.uuid)} style={{ backgroundImage: `url(${trash})` }}>
 
                 </button>
             </div>

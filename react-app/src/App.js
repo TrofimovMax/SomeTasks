@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import './App.css';
 
 import InputBlock from './InputBlock';
@@ -95,6 +96,14 @@ function App() {
     const firstTodoIndex = lastTodoIndex - TODO_PER_PAGE;
     const filteredList = filterList(listTodo, filterState, timeFilterState);
     const currentTodo = createCurrentTodo(filteredList, lastTodoIndex, firstTodoIndex);
+
+    useEffect(() => {
+        const apiUrl = 'https://todo-api-learning.herokuapp.com/v1/tasks/2';
+        axios.get(apiUrl).then((resp) => {
+          const allTodo = resp.data;
+          setListTodo(allTodo);
+        });
+      }, [setListTodo]);
 
     return (
         <div className="container">

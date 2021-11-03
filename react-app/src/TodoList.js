@@ -10,14 +10,10 @@ export default function TodoList({ listTodo, filterState, timeFilterState, chang
         return (
             <ul className={'list-group-item'}>
                 {
-                    filterList(listTodo,filterState, timeFilterState).map(({ id, name, time, completed }) => {
+                    filterList(listTodo,filterState, timeFilterState).map((todo) => {
                         return (
                             <TodoItem
-                                key={id}
-                                id={id}
-                                name={name}
-                                time={time}
-                                completed={completed}
+                                todo = {todo}
                                 changeCompleted={changeCompleted}
                                 changeName = {changeName}
                                 deleteTask={deleteTask} />
