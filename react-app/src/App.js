@@ -122,8 +122,8 @@ function App() {
     }, []);
 
     return (
-        <div className="container">
-            <p className="logo">
+        <div className='container'>
+            <p className='logo'>
                 ToDo
             </p>
             <InputBlock
@@ -133,7 +133,7 @@ function App() {
                 updateFilter={updateFilter}
                 updateTimeFilter={updateTimeFilter}
             />
-            <div className="container-inner">
+            <div className='container-inner'>
                 <TodoList
                     listTodo={currentTodo}
                     filterState={filterState}

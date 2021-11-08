@@ -49,7 +49,7 @@ export default function Edit({ id, name, done,  changeName }) {
 
     const renderDefaultView = () => {
         return (
-            <div className="name-todo text" onDoubleClick={changeEditMode}>
+            <div className='name-todo text' onDoubleClick={changeEditMode}>
                 {name}
             </div>
         )

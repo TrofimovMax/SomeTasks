@@ -13,8 +13,8 @@ export default function TodoItem({ todo, changeCompleted, changeName, deleteTask
 
     return (
         <li key={todo.uuid}>
-            <div className="todo-border" key={todo.uuid}>
-                <button className="comletedtodo-btn" onClick={() => changeCompleted(todo.uuid, todo.name, todo.done)}
+            <div className='todo-border' key={todo.uuid}>
+                <button className='comletedtodo-btn' onClick={() => changeCompleted(todo.uuid, todo.name, todo.done)}
                     style={{ backgroundImage: `url(${isCompletedd(todo.done)})` }} />
                 <Edit 
                     id = {todo.uuid}
@@ -22,10 +22,10 @@ export default function TodoItem({ todo, changeCompleted, changeName, deleteTask
                     done = {todo.done}
                     changeName = {changeName}
                 />
-                <div className="data-todo text">
+                <div className='data-todo text'>
                     {todo.createdAt.slice(0, 10)}
                 </div>
-                <button className="deltodo-btn" onClick={() => deleteTask(todo.uuid)} style={{ backgroundImage: `url(${trash})` }}>
+                <button className='deltodo-btn' onClick={() => deleteTask(todo.uuid)} style={{ backgroundImage: `url(${trash})` }}>
 
                 </button>
             </div>

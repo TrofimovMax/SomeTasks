@@ -14,15 +14,15 @@ export default function InputBlock({addTaskInList}) {
     }
 
     return (
-        <form className="container-inner" onSubmit={(e)=>handleAddInTask(e) }>
+        <form className='container-inner' onSubmit={(e)=>handleAddInTask(e) }>
             <input 
-            className="input"
-            type="text"
-            name="title"
-            placeholder="What do you want to do?"
+            className='input'
+            type='text'
+            name='title'
+            placeholder='What do you want to do?'
             value={nameTodo}
             onChange={handleChange}/>
-            <button className="btn text" onClick={handleAddInTask}>Add</button>
+            <button className='btn text' onClick={handleAddInTask}>Add</button>
         </form>
     );
 }   
