@@ -9,10 +9,23 @@ import TodoList from './TodoList';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
-    const [filterState, setFilterState] = useState('All');
-    const [timeFilterState, setTimeFilterState] = useState('Up');
+    const [filterState, setFilterState] = useState('');
+    const [timeFilterState, setTimeFilterState] = useState('asc');
 
     const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
+
+    useEffect(() => {
+        getTodos()
+    }, [filterState, timeFilterState]);
+
+    const getTodos = () => {
+        const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
+        axios.get(getURL)
+            .then((resp) => {
+                const allTodo = resp.data;
+                setListTodo(allTodo);
+            });
+    }
 
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
@@ -36,7 +49,7 @@ function App() {
     const changeCompleted = (id, name, done) => {
         axios
             .patch(`${baseURL}/${id}`, {
-                name: name, 
+                name: name,
                 done: !done
             })
             .then((response) => {
@@ -53,7 +66,7 @@ function App() {
     const changeName = (idEdit, editedName, editDone) => {
         axios
             .patch(`${baseURL}/${idEdit}`, {
-                name:editedName, 
+                name: editedName,
                 done: editDone
             })
             .then((response) => {
@@ -78,48 +91,15 @@ function App() {
         setCurrentPage(pageNumber);
     }
 
-    const filterList = (listTodo, filterState, timeFilterState) => {
-        const str = filterState + timeFilterState;
-        switch (str) {
-            case 'DoneUp':
-                return listTodo.filter((item) => item.done === true);
-            case 'UndoneUp':
-                return listTodo.filter((item) => item.done !== true);
-            case 'DoneDown':
-                return listTodo.slice().reverse().filter((item) => item.completed === true);
-            case 'UndoneDown':
-                return listTodo.slice().reverse().filter((item) => item.completed !== true);
-            case 'AllDown':
-                return listTodo.slice().reverse();
-            default:
-                return listTodo;
-        }
-    }
-
     const createCurrentTodo = (filteredList, lastTodoIndex, firstTodoIndex) => {
-
-        if (timeFilterState === 'Up') {
-            return filteredList.slice(firstTodoIndex, lastTodoIndex);
-        }
-        else {
-            return filteredList.slice(firstTodoIndex, lastTodoIndex).reverse();
-        }
+        return filteredList.slice(firstTodoIndex, lastTodoIndex);
     }
 
     const [currentPage, setCurrentPage] = useState(1);
     const TODO_PER_PAGE = 5;
     const lastTodoIndex = currentPage * TODO_PER_PAGE;
     const firstTodoIndex = lastTodoIndex - TODO_PER_PAGE;
-    const filteredList = filterList(listTodo, filterState, timeFilterState);
-    const currentTodo = createCurrentTodo(filteredList, lastTodoIndex, firstTodoIndex);
-
-    useEffect(() => {
-        const getURL = 'https://todo-api-learning.herokuapp.com/v1/tasks/6';
-        axios.get(getURL).then((resp) => {
-            const allTodo = resp.data;
-            setListTodo(allTodo);
-        });
-    }, []);
+    const currentTodo = createCurrentTodo(listTodo, lastTodoIndex, firstTodoIndex);
 
     return (
         <div className='container'>
@@ -141,11 +121,11 @@ function App() {
                     changeCompleted={changeCompleted}
                     changeName={changeName}
                     deleteTask={deleteTask}
-                    filterList={filterList} />
+                    />
             </div>
             <Pagination
                 TODO_PER_PAGE={TODO_PER_PAGE}
-                totalTodo={filteredList.length}
+                totalTodo={listTodo.length}
                 paginate={paginate}
             />
         </div>

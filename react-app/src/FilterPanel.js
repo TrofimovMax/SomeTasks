@@ -6,13 +6,13 @@ function FilterPanel({updateFilter, updateTimeFilter}) {
     return (
         <div className='container-inner'>
             <div className='btns'>
-                <button className='btn text' onClick={() => updateFilter('All')}>
+                <button className='btn text' onClick={() => updateFilter('')}>
                     All
                 </button>
-                <button className='btn text' onClick={() => updateFilter('Done')}>
+                <button className='btn text' onClick={() => updateFilter('done')}>
                     Done
                 </button>
-                <button className='btn text' onClick={() => updateFilter('Undone')}>
+                <button className='btn text' onClick={() => updateFilter('undone')}>
                     Undone
                 </button>
             </div>
@@ -22,11 +22,11 @@ function FilterPanel({updateFilter, updateTimeFilter}) {
                 </p>
                 <div className='updonw'>
                     <button className='updown-btn up-btn' 
-                    onClick={() => updateTimeFilter('Up')}
+                    onClick={() => updateTimeFilter('asc')}
                     style={{ backgroundImage: `url(${arrowUp})` }}/>
 
                     <button className='updown-btn down-btn'
-                    onClick={() => updateTimeFilter('Down')} 
+                    onClick={() => updateTimeFilter('desc')} 
                     style={{ backgroundImage: `url(${arrowDown})` }}/>
                 </div>
             </div>
