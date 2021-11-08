@@ -22,18 +22,15 @@ function App() {
         };
         axios
             .post(baseURL, newTask)
-            .then((response) => {
-                console.log(response.status);
-                setListTodo(response.data);
+            .then((response) => {;
+                setListTodo((prev) => [response.data, ...prev]);
             });
-        //setListTodo((prev) => [newTask, ...prev]);
     };
 
     const deleteTask = (taskIdToRemove) => {
         axios
             .delete(`${baseURL}/${taskIdToRemove}`)
             .then(res => setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove)));
-        //setListTodo((prev) => prev.filter((task) => task.id !== taskIdToRemove));
     };
 
     const changeCompleted = (id) => {
@@ -85,7 +82,7 @@ function App() {
     }
 
     const createCurrentTodo = (filteredList, lastTodoIndex, firstTodoIndex) => {
-        console.log(filteredList);
+        
         if (timeFilterState === 'Up') {
             return filteredList.slice(firstTodoIndex, lastTodoIndex);
         }
