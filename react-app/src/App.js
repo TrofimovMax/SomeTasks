@@ -12,25 +12,28 @@ function App() {
     const [filterState, setFilterState] = useState('All');
     const [timeFilterState, setTimeFilterState] = useState('Up');
 
+    const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
+
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
-        const timeUNIX = Date.now();
-        const date = new Date(timeUNIX);
         const newTask = {
-            id: Date.now(),
             name: nameTodo,
-            time: {
-                day: date.getDate(),
-                month: date.getMonth(),
-                year: date.getFullYear()
-            },
-            completed: false
+            done: false
         };
-        setListTodo((prev) => [newTask, ...prev]);
+        axios
+            .post(baseURL, newTask)
+            .then((response) => {
+                console.log(response.status);
+                setListTodo(response.data);
+            });
+        //setListTodo((prev) => [newTask, ...prev]);
     };
 
     const deleteTask = (taskIdToRemove) => {
-        setListTodo((prev) => prev.filter((task) => task.id !== taskIdToRemove));
+        axios
+            .delete(`${baseURL}/${taskIdToRemove}`)
+            .then(res => setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove)));
+        //setListTodo((prev) => prev.filter((task) => task.id !== taskIdToRemove));
     };
 
     const changeCompleted = (id) => {
@@ -67,9 +70,9 @@ function App() {
         const str = filterState + timeFilterState;
         switch (str) {
             case 'DoneUp':
-                return listTodo.filter((item) => item.completed === true);
+                return listTodo.filter((item) => item.done === true);
             case 'UndoneUp':
-                return listTodo.filter((item) => item.completed !== true);
+                return listTodo.filter((item) => item.done !== true);
             case 'DoneDown':
                 return listTodo.slice().reverse().filter((item) => item.completed === true);
             case 'UndoneDown':
@@ -82,12 +85,13 @@ function App() {
     }
 
     const createCurrentTodo = (filteredList, lastTodoIndex, firstTodoIndex) => {
-        if(timeFilterState === 'Up'){
+        console.log(filteredList);
+        if (timeFilterState === 'Up') {
             return filteredList.slice(firstTodoIndex, lastTodoIndex);
         }
-        else{
+        else {
             return filteredList.slice(firstTodoIndex, lastTodoIndex).reverse();
-        }   
+        }
     }
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -98,12 +102,12 @@ function App() {
     const currentTodo = createCurrentTodo(filteredList, lastTodoIndex, firstTodoIndex);
 
     useEffect(() => {
-        const apiUrl = 'https://todo-api-learning.herokuapp.com/v1/tasks/2';
-        axios.get(apiUrl).then((resp) => {
-          const allTodo = resp.data;
-          setListTodo(allTodo);
+        const getURL = 'https://todo-api-learning.herokuapp.com/v1/tasks/6';
+        axios.get(getURL).then((resp) => {
+            const allTodo = resp.data;
+            setListTodo(allTodo);
         });
-      }, [setListTodo]);
+    }, [setListTodo]);
 
     return (
         <div className="container">
