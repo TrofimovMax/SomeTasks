@@ -22,7 +22,7 @@ function App() {
         };
         axios
             .post(baseURL, newTask)
-            .then((response) => {;
+            .then((response) => {
                 setListTodo((prev) => [response.data, ...prev]);
             });
     };
@@ -33,22 +33,37 @@ function App() {
             .then(res => setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove)));
     };
 
-    const changeCompleted = (id) => {
-        setListTodo(prev => prev.map(item => {
-            if (item.id === id) {
-                return { ...item, completed: !item.completed }
-            }
-            return item
-        }))
+    const changeCompleted = (id, name, done) => {
+        axios
+            .patch(`${baseURL}/${id}`, {
+                name: name, 
+                done: !done
+            })
+            .then((response) => {
+                setListTodo(prev => prev.map(item => {
+                    if (item.uuid === response.data.uuid) {
+                        return response.data
+                    }
+                    return item
+                }))
+
+            });
     }
 
-    const changeName = (id, editedName) => {
-        setListTodo(prev => prev.map(item => {
-            if (item.id === id) {
-                return { ...item, name: editedName }
-            }
-            return item
-        }))
+    const changeName = (idEdit, editedName, editDone) => {
+        axios
+            .patch(`${baseURL}/${idEdit}`, {
+                name:editedName, 
+                done: editDone
+            })
+            .then((response) => {
+                setListTodo(prev => prev.map(item => {
+                    if (item.uuid === idEdit) {
+                        return { ...item, name: editedName }
+                    }
+                    return item
+                }))
+            });
     }
 
     const updateFilter = (name) => {
@@ -82,7 +97,7 @@ function App() {
     }
 
     const createCurrentTodo = (filteredList, lastTodoIndex, firstTodoIndex) => {
-        
+
         if (timeFilterState === 'Up') {
             return filteredList.slice(firstTodoIndex, lastTodoIndex);
         }
@@ -104,7 +119,7 @@ function App() {
             const allTodo = resp.data;
             setListTodo(allTodo);
         });
-    }, [setListTodo]);
+    }, []);
 
     return (
         <div className="container">

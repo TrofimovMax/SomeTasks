@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 
-export default function Edit({ id, name, changeName }) {
+export default function Edit({ id, name, done,  changeName }) {
 
     const [isInEditMode, setIsInEditMode] = useState(false)
-    const [editingText, seteditingText] = useState('');
+    const [editingText, setEditingText] = useState('');
+
+    function handleChange(e) {
+        setEditingText(e.target.value);
+    }
 
     function handleEditChange(e) {
         if(e.key === ' ' && editingText === '') return;
@@ -15,7 +19,6 @@ export default function Edit({ id, name, changeName }) {
             changeEditMode();
             return;
         }
-        seteditingText(editingText + e.key);
     }
 
     const changeEditMode = () => {
@@ -23,9 +26,9 @@ export default function Edit({ id, name, changeName }) {
     }
 
     const updateTodoValue = (id, value) => {
-        changeName(id, value);
+        changeName(id, value, done);
         setIsInEditMode(false);
-        seteditingText('');
+        setEditingText('');
     }
 
     const renderEditView = () => {
@@ -33,12 +36,13 @@ export default function Edit({ id, name, changeName }) {
             <>
                 <input 
                     id = 'EditInput'
-                    type='text'
+                    type = 'text'
                     autoFocus
-                    value={editingText}
-                    onKeyDown={handleEditChange}
+                    value = {editingText}
+                    onChange = {handleChange}
+                    onKeyDown = {handleEditChange}
                 />
-                <button className='btn text' onClick={() => updateTodoValue(id, editingText)}>OK</button>
+                {/* <button className='btn text' onClick={() => updateTodoValue(id, editingText)}>OK</button> */}
             </>
         )
     }

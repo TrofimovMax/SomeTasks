@@ -8,7 +8,7 @@ export default function TodoList({ listTodo, filterState, timeFilterState, chang
         return <h1 style={{ marginTop: '2vw' }}>Nothing...</h1>;
     } else {
         return (
-            <ul className={'list-group-item'}>
+            <ul className={'list-group-item'} key = 'list-group-item'>
                 {
                     filterList(listTodo,filterState, timeFilterState).map((todo) => {
                         return (
