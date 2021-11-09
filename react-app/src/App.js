@@ -14,13 +14,16 @@ function App() {
 
     const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
 
-    const getTodos = () => {
+    const getTodos = async () => {
         const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
-        axios.get(getURL)
-            .then((resp) => {
-                const allTodo = resp.data;
-                setListTodo(allTodo);
-            });
+        try{
+            const resp = axios.get(getURL);
+            const allTodo = (await resp).data;
+            setListTodo(allTodo);
+        } 
+        catch(e){
+            alert(e);
+        }
     }
 
     useEffect(() => {
