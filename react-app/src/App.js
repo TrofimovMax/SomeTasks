@@ -44,17 +44,9 @@ function App() {
         }
     };
 
-// try{
-
-// }
-// catch(e){
-//     alert(e);
-// }
-
     const deleteTask = async (taskIdToRemove) => {
         try{
             const response = await axios.delete(`${baseURL}/${taskIdToRemove}`);
-            console.log(response.data);
             setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove));
         }
         catch(e){
