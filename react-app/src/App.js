@@ -17,8 +17,8 @@ function App() {
     const getTodos = async () => {
         const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
         try{
-            const resp = axios.get(getURL);
-            const allTodo = (await resp).data;
+            const resp = await axios.get(getURL);
+            const allTodo = resp.data;
             setListTodo(allTodo);
         } 
         catch(e){
@@ -30,17 +30,19 @@ function App() {
         getTodos()
     }, [filterState, timeFilterState]);
 
-    const addTaskInList = (nameTodo) => {
+    const addTaskInList = async (nameTodo) => {
         if (!nameTodo) return;
-        const newTask = {
-            name: nameTodo,
-            done: false
-        };
-        axios
-            .post(baseURL, newTask)
-            .then((response) => {
-                setListTodo((prev) => [response.data, ...prev]);
-            });
+        try{
+            const newTask = {
+                name: nameTodo,
+                done: false
+            };
+            const response = await axios.post(baseURL, newTask)
+            setListTodo((prev) => [response.data, ...prev]);
+        } 
+        catch(e){
+            alert(e);
+        }
     };
 
     const deleteTask = (taskIdToRemove) => {
