@@ -5,7 +5,7 @@ export default function TodoList({ listTodo, changeCompleted, changeName, delete
 
 
     if (listTodo.length === 0) {
-        return <h1 style={{ marginTop: '2vw' }}>Nothing...</h1>;
+        return <h6 className='logo' style={{ marginTop: '2vw'}}>Nothing...</h6>;
     } else {
         return (
             <ul className={'list-group-item'}>

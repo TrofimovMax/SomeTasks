@@ -6,11 +6,14 @@ import InputBlock from './InputBlock';
 import FilterPanel from './FilterPanel';
 import Pagination from './Pagination';
 import TodoList from './TodoList';
+import ErrorWindow from './ErrorWindow';
 
 function App() {
     const [listTodo, setListTodo] = useState([]);
     const [filterState, setFilterState] = useState('');
     const [timeFilterState, setTimeFilterState] = useState('asc');
+    const [errorState, setErrorState] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
 
@@ -23,7 +26,8 @@ function App() {
                 setListTodo(allTodo);
             } 
             catch(e){
-                alert(e);
+                setErrorState(true);
+                setErrorMessage(e.message);
             }
         }
         getTodos()
@@ -40,7 +44,8 @@ function App() {
             setListTodo((prev) => [response.data, ...prev]);
         } 
         catch(e){
-            alert(e);
+            setErrorState(true);
+            setErrorMessage(e.message);
         }
     };
 
@@ -50,7 +55,8 @@ function App() {
             setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove));
         }
         catch(e){
-            alert(e);
+            setErrorState(true);
+            setErrorMessage(e.message);
         }
     };
 
@@ -68,7 +74,8 @@ function App() {
             }))
         }
         catch(e){
-            alert(e);
+            setErrorState(true);
+            setErrorMessage(e.message);
         }
     }
 
@@ -86,7 +93,8 @@ function App() {
             }))
         }
         catch(e){
-            alert(e);
+            setErrorState(true);
+            setErrorMessage(e.message);
         }
     }
 
@@ -136,6 +144,11 @@ function App() {
                 TODO_PER_PAGE={TODO_PER_PAGE}
                 totalTodo={listTodo.length}
                 paginate={paginate}
+            />
+            <ErrorWindow
+            errorState = {errorState}
+            errorMessage = {errorMessage}
+            setErrorState = {setErrorState}
             />
         </div>
     );

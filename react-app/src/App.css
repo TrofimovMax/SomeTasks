@@ -1,42 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 
@@ -79,7 +40,7 @@ input[type="text"] {
     -khtml-border-radius: 3px; 
     background: #ffffff !important; 
     outline: none; 
-    height: 25px; 
+    height: 40px; 
     width: 250px; 
     color: black; 
     font-size: 24px; 
@@ -110,6 +71,9 @@ input[type="text"] {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+}
+.name-sort{
+    margin-top: 1rem;
 }
 
 .updown{
@@ -183,12 +147,7 @@ input[type="text"] {
     background-size: 100%;
     color: inherit; 
 }
-/* .comletedtodo-btn:hover {
-    background: url({okAfter});
-}
-.comletedtodo-btn:active {
-    background: url({okClick});
-} */
+
 .name-todo{
     width: 200px;
     margin-left: 15px;
@@ -209,12 +168,7 @@ input[type="text"] {
     background-size: 100%;
     color: inherit;
 }
-/* .deltodo-btn:active{
-    background: url(/images/trashAct.svg);
-}
-.deltodo-btn:checked{
-    background: url(/images/trashAct.svg);
-} */
+
 .deltodo-btn:hover{
     box-shadow: 2px 2px black, 0.5em 0 .4em gray;
 }
@@ -240,4 +194,22 @@ input[type="text"] {
     background-repeat:no-repeat;
     background-size: 100%;
     color: inherit;
+}
+
+.b-popup{
+    width:100%;
+    height: 2000px;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+}
+.b-popup .b-popup-content{
+    margin:40px auto 0px auto;
+    width: 150px;
+    height: 100px;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
 }
