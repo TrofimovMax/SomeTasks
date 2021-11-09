@@ -14,19 +14,18 @@ function App() {
 
     const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
 
-    const getTodos = async () => {
-        const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
-        try{
-            const resp = await axios.get(getURL);
-            const allTodo = resp.data;
-            setListTodo(allTodo);
-        } 
-        catch(e){
-            alert(e);
-        }
-    }
-
     useEffect(() => {
+        const getTodos = async () => {
+            const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
+            try{
+                const resp = await axios.get(getURL);
+                const allTodo = resp.data;
+                setListTodo(allTodo);
+            } 
+            catch(e){
+                alert(e);
+            }
+        }
         getTodos()
     }, [filterState, timeFilterState]);
 
@@ -45,43 +44,58 @@ function App() {
         }
     };
 
-    const deleteTask = (taskIdToRemove) => {
-        axios
-            .delete(`${baseURL}/${taskIdToRemove}`)
-            .then(res => setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove)));
+// try{
+
+// }
+// catch(e){
+//     alert(e);
+// }
+
+    const deleteTask = async (taskIdToRemove) => {
+        try{
+            const response = await axios.delete(`${baseURL}/${taskIdToRemove}`);
+            console.log(response.data);
+            setListTodo((prev) => prev.filter((task) => task.uuid !== taskIdToRemove));
+        }
+        catch(e){
+            alert(e);
+        }
     };
 
-    const changeCompleted = (id, name, done) => {
-        axios
-            .patch(`${baseURL}/${id}`, {
+    const changeCompleted = async (id, name, done) => {
+        try{
+            const response = await axios.patch(`${baseURL}/${id}`, {
                 name: name,
                 done: !done
             })
-            .then((response) => {
-                setListTodo(prev => prev.map(item => {
-                    if (item.uuid === response.data.uuid) {
-                        return response.data
-                    }
-                    return item
-                }))
-
-            });
+            setListTodo(prev => prev.map(item => {
+                if (item.uuid === response.data.uuid) {
+                    return response.data
+                }
+                return item
+            }))
+        }
+        catch(e){
+            alert(e);
+        }
     }
 
-    const changeName = (idEdit, editedName, editDone) => {
-        axios
-            .patch(`${baseURL}/${idEdit}`, {
+    const changeName = async (idEdit, editedName, editDone) => {
+        try{
+            const response = await axios.patch(`${baseURL}/${idEdit}`, {
                 name: editedName,
                 done: editDone
             })
-            .then((response) => {
-                setListTodo(prev => prev.map(item => {
-                    if (item.uuid === idEdit) {
-                        return { ...item, name: editedName }
-                    }
-                    return item
-                }))
-            });
+            setListTodo(prev => prev.map(item => {
+                if (item.uuid === idEdit) {
+                    return { ...item, name: response.data.name }
+                }
+                return item
+            }))
+        }
+        catch(e){
+            alert(e);
+        }
     }
 
     const updateFilter = (name) => {
