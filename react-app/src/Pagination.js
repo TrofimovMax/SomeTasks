@@ -38,7 +38,7 @@ export default function Pagination({ TODO_PER_PAGE, totalTodo, paginate }) {
                                 <li className='page-item'>
                                     <button className='page-btn last-page' key = 'last'
                                         style={{ backgroundImage: `url(${arrowRight})` }} 
-                                        onClick={() => paginate(totalTodo / TODO_PER_PAGE)}
+                                        onClick={() => paginate(pageNumbers.length)}
                                         />
                                 </li>
                             </ul>
