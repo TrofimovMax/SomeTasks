@@ -42,7 +42,6 @@ export default function Edit({ id, name, done,  changeName }) {
                     onChange = {handleChange}
                     onKeyDown = {handleEditChange}
                 />
-                {/* <button className='btn text' onClick={() => updateTodoValue(id, editingText)}>OK</button> */}
             </>
         )
     }
