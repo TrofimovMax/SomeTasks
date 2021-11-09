@@ -14,10 +14,6 @@ function App() {
 
     const baseURL = 'https://todo-api-learning.herokuapp.com/v1/task/6';
 
-    useEffect(() => {
-        getTodos()
-    }, [filterState, timeFilterState]);
-
     const getTodos = () => {
         const getURL = `https://todo-api-learning.herokuapp.com/v1/tasks/6?filterBy=${filterState}&order=${timeFilterState}`;
         axios.get(getURL)
@@ -26,6 +22,10 @@ function App() {
                 setListTodo(allTodo);
             });
     }
+
+    useEffect(() => {
+        getTodos()
+    }, [filterState, timeFilterState]);
 
     const addTaskInList = (nameTodo) => {
         if (!nameTodo) return;
@@ -116,8 +116,6 @@ function App() {
             <div className='container-inner'>
                 <TodoList
                     listTodo={currentTodo}
-                    filterState={filterState}
-                    timeFilterState={timeFilterState}
                     changeCompleted={changeCompleted}
                     changeName={changeName}
                     deleteTask={deleteTask}
