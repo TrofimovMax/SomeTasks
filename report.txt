@@ -1,6 +1,0 @@
-11.10.21 
-Done today:
-    install IDE, node, git
-    Code some function JS
-Plans for tomorrow:
-    learn function: map, filter, set, reduce
