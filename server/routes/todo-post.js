@@ -12,7 +12,6 @@ router.post('/todos', (req, res) => {
         const todoUuid = uuidv4();
         let todo = { name: todoName, done: todoDone, uuid: todoUuid };
         let data = fs.readFileSync(filePath, "utf8");
-        console.log(data);
         let todos = []
         if (data) {
             todos = JSON.parse(data);

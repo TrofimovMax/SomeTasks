@@ -10,7 +10,6 @@ router.patch('/todos/:uuid', (req, res) => {
         const todoUuid = req.body.uuid;
         let todo = { name: todoName, done: todoDone, uuid: todoUuid };
         let data = fs.readFileSync(filePath, "utf8");
-        console.log(data);
         const todos = JSON.parse(data);
         for (var i = 0; i < todos.length; i++) {
             if (todos[i].uuid == todoUuid) {
