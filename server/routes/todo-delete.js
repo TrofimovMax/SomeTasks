@@ -5,28 +5,13 @@ const filePath = "data.json";
 
 router.delete('/todos/:uuid', (req, res) => {
     try {
-        const id = req.params.uuid;
-        let data = fs.readFileSync(filePath, "utf8");
-        let todos = JSON.parse(data);
-        let index = -1;
-        // находим индекс пользователя в массиве
-        for (var i = 0; i < todos.length; i++) {
-            if (todos[i].uuid == id) {
-                index = i;
-                break;
-            }
-        }
-        if (index > -1) {
-            // удаляем пользователя из массива по индексу
-            const todo = todos.splice(index, 1)[0];
-            data = JSON.stringify(todos);
-            fs.writeFileSync("todos.json", data);
-            // отправляем uuid удаленного пользователя
-            res.status(200).send(todo.uuid);
-        }
-        else {
-            res.status(404).send(`error: todo with id ${req.params.uuid} does not exist`);
-        }
+        const uuid = req.params.uuid;
+        const todos = JSON.parse(fs.readFileSync(filePath));
+        const todo = todos.find(todo => todo.uuid === uuid )
+        if(!todo) return res.status(404).send('Task not found');
+        const newTodos = todos.filter(todo => todo.uuid !== uuid);
+        fs.writeFileSync(filePath, JSON.stringify(newTodos));
+        res.status(200).send(todo.uuid);
     } catch (e) {
         const errObj = {
             "code": e.code,

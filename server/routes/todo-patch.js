@@ -1,33 +1,26 @@
 const Router = require('express');
 const router = new Router();
 const fs = require('fs');
+const filePath = "data.json";
+
 
 router.patch('/todos/:uuid', (req, res) => {
     try {
         if (!req.body) return res.sendStatus(400);
-        const todoName = req.body.name;
-        const todoDone = req.body.done;
-        const todoUuid = req.body.uuid;
-        let todo = { name: todoName, done: todoDone, uuid: todoUuid };
-        let data = fs.readFileSync(filePath, "utf8");
-        const todos = JSON.parse(data);
-        for (var i = 0; i < todos.length; i++) {
-            if (todos[i].uuid == todoUuid) {
-                todo = todos[i];
-                break;
+        const { name, done } = req.body;
+        const uuid = req.params.uuid;
+        const todos = JSON.parse(fs.readFileSync(filePath));
+        const todo = todos.find(todo => todo.uuid === uuid)
+        if (!todo) return res.status(404).send('Task not found');
+        const newTodos = todos.map(todo => {
+            if (todo.uuid === uuid) {
+                todo.name = name;
+                todo.done = done;
             }
-        }
-        // изменяем данные у пользователя
-        if (todo) {
-            todo.done = !todoDone;
-            todo.name = todoName;
-            data = JSON.stringify(todos);
-            fs.writeFileSync("todos.json", data);
-            res.send(todo);
-        }
-        else {
-            res.status(404).send(todo);
-        }
+            return todo
+        })
+        fs.writeFileSync(filePath, JSON.stringify(newTodos));
+        res.status(200).send({ uuid, name, done });
     } catch (e) {
         const errObj = {
             "code": e.code,

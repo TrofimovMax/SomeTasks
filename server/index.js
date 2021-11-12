@@ -2,8 +2,6 @@
 const express = require('express');
 const PORT = process.env.PORT ?? 3000;
 
-
-
 // создаем объект приложения
 const app = express();
 //express не может явно преобразовывать в JSON формат
