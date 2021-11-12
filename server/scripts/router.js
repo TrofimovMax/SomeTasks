@@ -2,20 +2,52 @@ import Router from 'express'
 import fs from 'fs'
 import { v4 as uuidv4 } from 'uuid';
 
-
+const filePath = "data.json";
 const router = new Router()
 
-router.post('/todos', (req, res)=>{
-    try{
-        const dataString = JSON.stringify({...req.body, uuid: uuidv4()}, null, 2);
-        fs.appendFile("data.json", dataString, 
-        function(err, result) {
-            if(err) console.log('error', err);
-        });
-        res.status(200).send(dataString)
-    }catch(e){
-        res.status(500).send('error')
+router.post('/todos', (req, res) => {
+    try {
+        const todoName = req.body.name;
+        const todoDone = req.body.done;
+        const todoUuid = uuidv4();
+        let todo = { name: todoName, done: todoDone, uuid: todoUuid};
+        let data = fs.readFileSync(filePath, "utf8");
+        console.log(data);
+        let todos = []
+        if(data){
+            todos = JSON.parse(data);
+        }
+        // добавляем пользователя в массив
+        todos.push(todo);
+        console.log(todos);
+        data = JSON.stringify(todos);
+        // перезаписываем файл с новыми данными
+        fs.writeFileSync(filePath, data);
+        res.status(200).send(todo);
+    } catch (e) {
+        const errObj = {
+            "code": e.code,
+            "massage": e.message,
+        }
+        res.status(500).send(errObj)
     }
 })
+
+router.get('/todos', (req, res) => {
+    try {
+        const content = fs.readFileSync(filePath, "utf8");
+        const todos = JSON.parse(content);
+        res.status(200).send(todos);
+    } catch (e) {
+        const errObj = {
+            "code": e.code,
+            "massage": e.message,
+        }
+        res.status(500).send(errObj)
+    }
+})
+
+
+
 
 export default router;

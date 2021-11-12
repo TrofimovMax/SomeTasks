@@ -1,14 +1,1 @@
-{
-  "name": "test",
-  "done": true,
-  "uuid": "6ad70d1b-6309-43e3-8fad-c81278c03f41"
-}
-{
-  "name": "test",
-  "done": true,
-  "uuid": "e7eee2ee-a101-4bb3-a224-7452e0e643e9"
-}{
-  "name": "sssss",
-  "done": true,
-  "uuid": "8a3b5a89-d304-4bbb-ae7b-a091fd53f022"
-}
+[{"name":"task 1","done":true,"uuid":"ba4ed7f3-1d12-4c38-87ba-a4bf23bfdea8"},{"name":"task 2","done":true,"uuid":"4b6b5be8-8d5f-4d23-9f92-cdc81f8d7a24"}]
