@@ -1,18 +1,15 @@
 // подключение express
-const express = require("express");
-
+import express from 'express'
+import router from "./scripts/router.js";
 const PORT = process.env.PORT ?? 3000;
 
 
 // создаем объект приложения
 const app = express();
-// определяем обработчик для маршрута "/"
-app.get("/", function(request, response){
-     
-    // отправляем ответ
-    response.send("<h2>Привет Express!</h2>");
-});
+//express не может явно преобразовывать в JSON формат
+app.use(express.json()); 
+
+app.use('/api', router)
+
 // начинаем прослушивать подключения на 3000 порту
-app.listen(PORT, () => {
-    console.log('server has been started...')
-});
+app.listen(PORT, () => console.log('SERVER STARTED ON PORT ' + PORT))
